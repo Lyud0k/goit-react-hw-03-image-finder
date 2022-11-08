@@ -1,7 +1,19 @@
 
 import React  from 'react';
 
+
+
 export class Searchbar extends React.Component{
+  state = {
+  inName: '',
+  }
+  
+  outValue = (evt) => {
+    this.setState({
+      inName: evt.currentTarget.value
+  })
+  }
+
     render() {
         return (
 
@@ -16,7 +28,9 @@ export class Searchbar extends React.Component{
       type="text"
       autocomplete="off"
       autofocus
-      placeholder="Search images and photos"
+                placeholder="Search images and photos"
+                onChange={this.outValue}
+                value ={this.state.inName}
     />
   </form>
             </header>
