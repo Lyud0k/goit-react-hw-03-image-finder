@@ -1,4 +1,4 @@
-
+import css from '../Searchbar/Searchbar.module.css';
 import React  from 'react';
 
 
@@ -14,17 +14,27 @@ export class Searchbar extends React.Component{
   })
   }
 
+    formSubmit = evt => {
+      evt.preventDefault();
+      if (this.state.inName.trim() === '') {
+        alert('write text');
+        return;
+}
+    this.props.onSubmit(this.state.inName);
+  
+  };
+
     render() {
         return (
 
-<header class="searchbar">
-  <form class="form">
-    <button type="submit" class="button">
-      <span class="button-label">Search</span>
+<header className={css.searchbar}>
+  <form onSubmit={this.formSubmit}>
+    <button type="submit" className={css.button}>
+      <span className={css.buttonLabel}>Search</span>
     </button>
 
     <input
-      class="input"
+      className={css.input}
       type="text"
       autocomplete="off"
       autofocus
