@@ -5,23 +5,23 @@ import React  from 'react';
 
 export class Searchbar extends React.Component{
   state = {
-  inName: '',
+  query: '',
   }
   
   outValue = (evt) => {
     this.setState({
-      inName: evt.currentTarget.value
-  })
+      query: evt.currentTarget.value.toLowerCase()
+    });
   }
 
     formSubmit = evt => {
       evt.preventDefault();
-      if (this.state.inName.trim() === '') {
+      if (this.state.query.trim() === '') {
         alert('write text');
         return;
 }
-    this.props.onSubmit(this.state.inName);
-  
+    this.props.onSubmit(this.state.query);
+      this.setState({ query: '' });
   };
 
     render() {
@@ -38,9 +38,9 @@ export class Searchbar extends React.Component{
       type="text"
       autocomplete="off"
       autofocus
-                placeholder="Search images and photos"
-                onChange={this.outValue}
-                value ={this.state.inName}
+      placeholder="Search images and photos"
+      onChange={this.outValue}
+      value ={this.state.query}
     />
   </form>
             </header>

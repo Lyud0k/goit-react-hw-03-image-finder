@@ -1,11 +1,29 @@
 import css from '../Modal/Modal.module.css';
+import React from 'react';
 
-export const Modal = ({ largeImg, alt, hide }) => (
-  
-<div className={css.overlay}>
+
+export class Modal extends React.Component {
+   changeSizeOnlyOne = evt => {
+    if (evt.target === evt.currentTarget) {
+      this.props.hide();
+    }
+  };
+
+     
+render(){
+    const { img, alt, largeImg, hide } = this.props;
+    return (
+        
+            <div className={css.overlay}>
   <div className={css.modal}>
-    <img src={largeImg} alt={alt} />
+                {hide && <img src={largeImg} alt={alt}  onClick = {this.changeSizeOnlyOne}/>}
   </div>
         </div>
+
+    )
+            
+     }
+  
+
         
-)
+}

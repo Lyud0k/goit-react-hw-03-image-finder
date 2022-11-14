@@ -7,14 +7,14 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 
 export class App extends React.Component{
   state = {
-  answer: '',
+  query: '',
   // data: '',
   number: 1,
   images: [],
   }
 
-  saveValue = answer => {
-    this.setState({ answer });
+  saveValue = query => {
+    this.setState({ number: 1, query, images: [] });
   };
 
 
@@ -22,11 +22,8 @@ export class App extends React.Component{
   render() {
     return (
       <div>
-        {/* <p>{this.state.data.total}</p> */}
-        {/* {this.state.data && (<p>{this.state.data.total}</p>)} */}
-
         <Searchbar onSubmit={this.saveValue} />
-        <ImageGallery />
+        <ImageGallery name={this.state.query} />
         {/* <ImageGalleryItem  /> */}
        
       </div>

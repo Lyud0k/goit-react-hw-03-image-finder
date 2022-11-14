@@ -1,7 +1,34 @@
+import React from "react";
+import { Modal } from "../Modal/Modal";
 
-export const ImageGalleryItem = ({ img, alt, click }) => (
-   
+export class ImageGalleryItem extends React.Component{
+    state = {
+        visible: false,
+    }
+
+      visibleChange = () => {
+    this.setState(state => ({
+      visible: !state.visible,
+      
+    }));
+
+    };
+    
+    render() {
+        const { img, alt, largeImg } = this.props;
+        return (
+  
     <>
-        <img src= { img } alt={alt} onClick = {click} />
+                {!this.state.visible && <img src={img} alt={alt} onClick={this.visibleChange} />}
+                    
+                {this.state.visible && <Modal
+                    img={img}
+                    alt={alt}
+                    largeImg={largeImg}
+                    hide={this.visibleChange} />}
     </>
 )
+    
+}
+
+}
