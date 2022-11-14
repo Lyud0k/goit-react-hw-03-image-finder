@@ -10,9 +10,9 @@ export class ImageGallery extends React.Component {
 }
 
   componentDidUpdate(prevProps, prevState) {
-    const {name, page} = this.props
-    if(prevProps.name !== name || prevProps.page !== page) {
-    fetch('https://pixabay.com/api/?q={name}&page={number}&key=29818615-eeef91044a0285c2bbb309d67&image_type=photo&orientation=horizontal&per_page=12')
+    const { name, number } = this.props;
+    if(prevProps.name !== name || prevProps.number !== number) {
+    fetch('https://pixabay.com/api/?q=${name}&page=${number}&key=29818615-eeef91044a0285c2bbb309d67&image_type=photo&orientation=horizontal&per_page=12')
       .then(res => res.json())
       .then(data => this.setState({ data: data.hits }));
  }
@@ -27,7 +27,7 @@ export class ImageGallery extends React.Component {
         {data.map(({ id, webformatURL, tags, largeImageURL }) => {
           return(
             <li key={id}>
-              console.log({tags});
+             
               <ImageGalleryItem
                 
                 img={webformatURL}

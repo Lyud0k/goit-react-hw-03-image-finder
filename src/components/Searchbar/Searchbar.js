@@ -14,6 +14,7 @@ export class Searchbar extends React.Component{
     });
   }
 
+
     formSubmit = evt => {
       evt.preventDefault();
       if (this.state.query.trim() === '') {

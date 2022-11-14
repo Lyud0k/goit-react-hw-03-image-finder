@@ -14,7 +14,7 @@ export class App extends React.Component{
   }
 
   saveValue = query => {
-    this.setState({ number: 1, query, images: [] });
+    this.setState({ number: 1, query: query, images: [] });
   };
 
 
@@ -23,7 +23,9 @@ export class App extends React.Component{
     return (
       <div>
         <Searchbar onSubmit={this.saveValue} />
-        <ImageGallery name={this.state.query} />
+        <ImageGallery name={this.state.query}
+          number={this.state.number}
+          images={this.state.images} />
         {/* <ImageGalleryItem  /> */}
        
       </div>
