@@ -19,9 +19,10 @@ export class ImageGalleryItem extends React.Component{
         return (
   
     <>
-                {!this.state.visible && <img src={img} alt={alt} onClick={this.visibleChange} />}
+                {!this.state.visible && <img className={css.itemImage} src={img} alt={alt} onClick={this.visibleChange} />}
                     
-                {this.state.visible && <Modal
+            {this.state.visible && <Modal
+              
                     img={img}
                     alt={alt}
                     largeImg={largeImg}

@@ -6,15 +6,21 @@ export class ImageGallery extends React.Component {
   state = {
     data: [],
     visible: false,
-    alt:[],
+    loadMore: false,
 }
 
   componentDidUpdate(prevProps, prevState) {
-    const { name, number } = this.props;
-    if(prevProps.name !== name || prevProps.number !== number) {
-    fetch('https://pixabay.com/api/?q=${name}&page=${number}&key=29818615-eeef91044a0285c2bbb309d67&image_type=photo&orientation=horizontal&per_page=12')
+    const { name, page } = this.props;
+    if(prevProps.name !== name || prevProps.page !== page) {
+    fetch (`https://pixabay.com/api/?q=${name}&page=${page}&key=29818615-eeef91044a0285c2bbb309d67&image_type=photo&orientation=horizontal&per_page=12`)
       .then(res => res.json())
-      .then(data => this.setState({ data: data.hits }));
+        .then(data => this.setState({ data: data.hits }));
+              // const images = res.data.hits;
+              addImg(data);
+              data.length === 12
+            ? this.setState({ loadMore: true })
+            : this.setState({ loadMore: false });
+        
  }
   }
 
@@ -23,10 +29,10 @@ export class ImageGallery extends React.Component {
   render() {
     const { data } = this.state;
     return (
-      <ul>
+      <ul className={css.gallery}>
         {data.map(({ id, webformatURL, tags, largeImageURL }) => {
           return(
-            <li key={id}>
+            <li className={css.galleryItem} key={id}>
              
               <ImageGalleryItem
                 

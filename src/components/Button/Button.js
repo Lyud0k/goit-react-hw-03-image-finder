@@ -1,3 +1,4 @@
-export const Button = () => (
-    <button type='button'>More</button>
+export const Button = ({more}) => (
+    
+    <button onClick={more} type='button'>More</button>
 )

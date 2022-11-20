@@ -29,7 +29,7 @@ export class Searchbar extends React.Component{
         return (
 
 <header className={css.searchbar}>
-  <form onSubmit={this.formSubmit}>
+  <form className={css.form} onSubmit={this.formSubmit}>
     <button type="submit" className={css.button}>
       <span className={css.buttonLabel}>Search</span>
     </button>
